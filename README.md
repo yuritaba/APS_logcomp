@@ -90,4 +90,4 @@ ReservedWord   = "conta" | "se" | "senão" | "enquanto"
                
 ## Diagrama Sintático
 
-![Diagrama Sintático](diagrama_sintatico.pdf)
+![Diagrama Sintático](diagrama_sintatico.png)
