@@ -1,6 +1,8 @@
 # MoneyLang e BankVM
 
-## 1) PROGRAMA, INSTRUÇÕES E DECLARAÇÕES
+## EBNF da Linguagem
+
+### 1) PROGRAMA, INSTRUÇÕES E DECLARAÇÕES
 
 Program        = { Statement }
 
@@ -14,17 +16,17 @@ VarDecl       = "conta" Identifier "=" Expression ;
 
 Assignment    = Identifier "=" Expression ;
 
-## 2) BLOCO E CONTROLE DE FLUXO
+### 2) BLOCO E CONTROLE DE FLUXO
 
 IfStmt        = "se" "(" Condition ")" Newline
-                TAB { Statement Newline } DEDENT
+                IDENT { Statement Newline } DEDENT
                 [ "senão" Newline
-                  TAB { Statement Newline } DEDENT ] ;
+                  IDENT { Statement Newline } DEDENT ] ;
 
 WhileStmt     = "enquanto" "(" Condition ")" Newline
-                TAB { Statement Newline } DEDENT ;
+                IDENT { Statement Newline } DEDENT ;
                 
-## 3) COMANDOS ESPECÍFICOS DA VM (BankVM)
+### 3) COMANDOS ESPECÍFICOS DA VM (BankVM)
 
 Command       = DepositCmd
               | WithdrawCmd
@@ -44,7 +46,7 @@ PrintCmd      = "mostrar" "(" PrintArg { "," PrintArg } ")" ;
 
 PrintArg      = Expression | String ;
 
-## 4) EXPRESSÕES (com precedência)
+### 4) EXPRESSÕES (com precedência)
 
 Expression    = Term { ("+" | "-") Term } ;
 
@@ -58,15 +60,15 @@ Primary       = Number
               | "(" Expression ")" ;
 
 
-## 6) CONDIÇÕES
+### 5) CONDIÇÕES
 
 Condition     = Expression ( "==" | "!=" | "<" | ">" | "<=" | ">=" ) Expression ;
 
-## 7) SENSORES
+### 6) SENSORES
 
 Sensor        = "tempo" | "juros" ;
 
-## 8) LÉXICO
+### 7) LÉXICO
 
 Identifier    = Letter { Letter | Digit | "_" } ;
 
@@ -78,7 +80,7 @@ Letter        = "a" | … | "z" | "A" | … | "Z" ;
 
 Digit         = "0" | … | "9" ;
 
-## 9) PALAVRAS-RESERVADAS
+### 8) PALAVRAS-RESERVADAS
 
 ReservedWord   = "conta" | "se" | "senão" | "enquanto"
                | "depositar" | "sacar" | "transferir" | "aplicar_juros"
@@ -86,3 +88,6 @@ ReservedWord   = "conta" | "se" | "senão" | "enquanto"
                | "verdadeiro" | "falso" ;
 
                
+## Diagrama Sintático
+
+![Diagrama Sintático](diagrama_sintatico.pdf)
