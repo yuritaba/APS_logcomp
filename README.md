@@ -1,5 +1,49 @@
 # MoneyLang e BankVM
 
+## Visão Geral
+
+MoneyLang é uma DSL para operações bancárias que agora possui um compilador escrito com Flex/Bison. O compilador gera Assembly para a BankVM, cujas instruções estão descritas em `docs/VM_SPEC.md`.
+
+## Compilador MoneyLang
+
+### Dependências
+- GCC/Clang com suporte a C11
+- Flex
+- Bison
+
+### Construção
+```bash
+make
+```
+O binário `bin/moneyc` será gerado junto com artefatos intermediários em `build/`.
+
+### Uso
+```bash
+bin/moneyc programa.money -o saida.asm
+```
+Se `-o` não for indicado, o Assembly é impresso em `stdout`.
+
+### Exemplo Rápido
+```money
+conta origem = 1000
+conta destino = 0
+
+enquanto (origem > 0)
+    transferir(origem, destino, 100)
+
+mostrar("saldo final", origem, destino)
+```
+```bash
+bin/moneyc exemplo.money -o exemplo.asm
+```
+
+## Estrutura do Projeto
+- `src/`: arquivos `.l`, `.y` e fontes em C (AST, codegen, main)
+- `include/`: cabeçalhos compartilhados
+- `docs/VM_SPEC.md`: especificação textual do Assembly da BankVM
+- `Makefile`: recipes para gerar o compilador
+- `AGENTS.md`: guia de contribuição
+
 ## EBNF da Linguagem
 
 ### 1) PROGRAMA, INSTRUÇÕES E DECLARAÇÕES

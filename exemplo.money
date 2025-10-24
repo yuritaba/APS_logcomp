@@ -1,0 +1,9 @@
+conta saldo = 1000
+
+se (saldo > 100)
+    mostrar("Saldo alto")
+senão
+    mostrar("Saldo baixo")
+
+enquanto (saldo > 0)
+    sacar(saldo, 100)
