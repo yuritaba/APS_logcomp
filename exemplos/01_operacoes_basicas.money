@@ -1,0 +1,10 @@
+# Exemplo 1: Operações Básicas de Conta
+# Demonstra: declaração de contas, depósito, saque e impressão
+
+conta poupanca = 1000
+
+depositar(poupanca, 500)
+mostrar("Após depósito de 500:", poupanca)
+
+sacar(poupanca, 200)
+mostrar("Após saque de 200:", poupanca)

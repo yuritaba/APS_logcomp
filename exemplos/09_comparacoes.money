@@ -1,0 +1,35 @@
+# Exemplo 9: Comparações e Lógica
+# Demonstra: todos os operadores de comparação
+
+conta valor1 = 100
+conta valor2 = 200
+conta valor3 = 100
+
+mostrar("=== Testes de Comparação ===")
+mostrar("valor1:", valor1)
+mostrar("valor2:", valor2)
+mostrar("valor3:", valor3)
+
+# Igualdade
+se (valor1 == valor3)
+    mostrar("✓ valor1 é igual a valor3")
+
+# Diferença
+se (valor1 != valor2)
+    mostrar("✓ valor1 é diferente de valor2")
+
+# Menor que
+se (valor1 < valor2)
+    mostrar("✓ valor1 é menor que valor2")
+
+# Maior que
+se (valor2 > valor1)
+    mostrar("✓ valor2 é maior que valor1")
+
+# Menor ou igual
+se (valor1 <= valor3)
+    mostrar("✓ valor1 é menor ou igual a valor3")
+
+# Maior ou igual
+se (valor2 >= valor1)
+    mostrar("✓ valor2 é maior ou igual a valor1")

@@ -1,0 +1,20 @@
+# Exemplo 3: Estruturas Condicionais
+# Demonstra: comando se/senão com comparações
+
+conta saldo = 750
+
+se (saldo >= 1000)
+    mostrar("Cliente VIP - Saldo alto!")
+    aplicar_juros(saldo, 0.10)
+senão
+    mostrar("Cliente Regular")
+    aplicar_juros(saldo, 0.05)
+
+mostrar("Saldo após juros:", saldo)
+
+# Teste com saldo negativo
+conta overdraft = -200
+
+se (overdraft < 0)
+    mostrar("ALERTA: Conta no negativo!")
+    mostrar("Saldo devedor:", overdraft)

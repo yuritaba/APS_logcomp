@@ -1,0 +1,49 @@
+# Exemplo 8: Simulação Bancária Completa
+# Demonstra: cenário real com múltiplas features
+
+conta corrente = 2000
+conta poupanca = 5000
+conta investimento = 10000
+
+mostrar("=== BANCO MONEYLANG ===")
+mostrar("Saldos Iniciais:")
+mostrar("  Corrente:", corrente)
+mostrar("  Poupança:", poupanca)
+mostrar("  Investimento:", investimento)
+
+# Cliente faz um saque
+mostrar("\n--- Operação: Saque ---")
+sacar(corrente, 300)
+mostrar("Saque de 300 realizado")
+mostrar("Corrente:", corrente)
+
+# Cliente transfere para investimento
+mostrar("\n--- Operação: Transferência ---")
+transferir(corrente, investimento, 500)
+mostrar("Transferência de 500 para investimento")
+mostrar("Corrente:", corrente)
+mostrar("Investimento:", investimento)
+
+# Aplicar juros nas contas
+mostrar("\n--- Rendimentos Mensais ---")
+aplicar_juros(poupanca, 0.03)
+aplicar_juros(investimento, 0.08)
+mostrar("Poupança (3%):", poupanca)
+mostrar("Investimento (8%):", investimento)
+
+# Verificar se precisa cobrar tarifa
+mostrar("\n--- Verificação de Tarifas ---")
+se (corrente < 1000)
+    mostrar("Saldo abaixo do mínimo - Cobrando tarifa")
+    sacar(corrente, 15)
+senão
+    mostrar("Isento de tarifas - Saldo adequado")
+
+mostrar("\n=== SALDOS FINAIS ===")
+mostrar("  Corrente:", corrente)
+mostrar("  Poupança:", poupanca)
+mostrar("  Investimento:", investimento)
+
+# Calcular patrimônio total
+conta total = corrente + poupanca + investimento
+mostrar("\n  PATRIMÔNIO TOTAL:", total)

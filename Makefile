@@ -57,3 +57,36 @@ distclean: clean
 
 run: $(TARGET)
 	$(TARGET)
+
+# Testar com um exemplo
+test: $(TARGET)
+	@echo "Compilando exemplo..."
+	$(TARGET) exemplo.money -o saida.asm
+	@echo "Executando na VM..."
+	python3 vm/bankvm.py saida.asm
+
+# Executar todos os testes
+test-all: $(TARGET)
+	./test_exemplos.sh
+
+# Executar exemplo específico
+test-example: $(TARGET)
+	@if [ -z "$(EX)" ]; then \
+		echo "Uso: make test-example EX=01_operacoes_basicas"; \
+		exit 1; \
+	fi
+	@echo "Compilando exemplos/$(EX).money..."
+	$(TARGET) exemplos/$(EX).money -o build/$(EX).asm
+	@echo "Executando..."
+	python3 vm/bankvm.py build/$(EX).asm
+
+# Modo debug
+debug-example: $(TARGET)
+	@if [ -z "$(EX)" ]; then \
+		echo "Uso: make debug-example EX=01_operacoes_basicas"; \
+		exit 1; \
+	fi
+	@echo "Compilando exemplos/$(EX).money..."
+	$(TARGET) exemplos/$(EX).money -o build/$(EX).asm
+	@echo "Executando em modo debug..."
+	python3 vm/bankvm.py build/$(EX).asm --debug

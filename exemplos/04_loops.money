@@ -1,0 +1,17 @@
+# Exemplo 4: Laços de Repetição
+# Demonstra: comando enquanto com contador
+
+conta saldo = 1000
+conta parcelas = 5
+
+mostrar("=== Simulação de Pagamentos ===")
+mostrar("Saldo inicial:", saldo)
+mostrar("Número de parcelas:", parcelas)
+
+enquanto (parcelas > 0)
+    sacar(saldo, 150)
+    parcelas = parcelas - 1
+    mostrar("Parcela paga. Restam:", parcelas, "| Saldo:", saldo)
+
+mostrar("=== Pagamentos Concluídos ===")
+mostrar("Saldo final:", saldo)

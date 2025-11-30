@@ -1,0 +1,24 @@
+# Exemplo 7: Expressões Aritméticas Complexas
+# Demonstra: operadores aritméticos e precedência
+
+conta total = 0
+
+# Adição e multiplicação
+total = 100 + 50 * 2
+mostrar("100 + 50 * 2 =", total)
+
+# Divisão e subtração
+total = 1000 / 4 - 50
+mostrar("1000 / 4 - 50 =", total)
+
+# Módulo
+total = 100 % 30
+mostrar("100 % 30 =", total)
+
+# Expressões compostas
+total = (100 + 200) * 3 / 2
+mostrar("(100 + 200) * 3 / 2 =", total)
+
+# Negação
+total = -(50 + 50)
+mostrar("-(50 + 50) =", total)

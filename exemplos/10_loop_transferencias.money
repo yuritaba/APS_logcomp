@@ -1,0 +1,19 @@
+# Exemplo 10: Loop com Transferências Graduais
+# Demonstra: combinação de loop e transferências
+
+conta origem = 1000
+conta destino = 0
+conta iteracoes = 10
+
+mostrar("=== Transferência Gradual ===")
+mostrar("Origem inicial:", origem)
+mostrar("Destino inicial:", destino)
+mostrar("Parcelas:", iteracoes)
+
+enquanto (iteracoes > 0)
+    transferir(origem, destino, 100)
+    iteracoes = iteracoes - 1
+
+mostrar("\n=== Resultado ===")
+mostrar("Origem final:", origem)
+mostrar("Destino final:", destino)

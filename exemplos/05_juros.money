@@ -1,0 +1,21 @@
+# Exemplo 5: Aplicação de Juros
+# Demonstra: aplicar_juros e cálculos compostos
+
+conta investimento = 10000
+
+mostrar("=== Simulação de Investimento ===")
+mostrar("Capital inicial:", investimento)
+
+# Primeiro mês - 5% de rendimento
+aplicar_juros(investimento, 0.05)
+mostrar("Após 1º mês (5%):", investimento)
+
+# Segundo mês - 5% de rendimento
+aplicar_juros(investimento, 0.05)
+mostrar("Após 2º mês (5%):", investimento)
+
+# Terceiro mês - 5% de rendimento
+aplicar_juros(investimento, 0.05)
+mostrar("Após 3º mês (5%):", investimento)
+
+mostrar("Rendimento total:", investimento - 10000)

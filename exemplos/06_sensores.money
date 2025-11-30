@@ -1,0 +1,16 @@
+# Exemplo 6: Sensores da Linguagem
+# Demonstra: uso de sensores tempo e juros
+
+conta poupanca = 5000
+
+mostrar("=== Sistema de Sensores ===")
+
+# Sensor de taxa de juros
+mostrar("Taxa de juros atual do sistema:", juros)
+
+# Aplicar juros baseado no sensor
+aplicar_juros(poupanca, juros)
+mostrar("Saldo após aplicar juros do sistema:", poupanca)
+
+# Sensor de tempo (segundos desde início)
+mostrar("Tempo de execução:", tempo, "segundos")

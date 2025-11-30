@@ -1,15 +1,37 @@
-# MoneyLang e BankVM
+# MoneyLang e BankVM 💰
+
+## 🚀 Início Rápido
+
+**🎯 Novo aqui?** → [**QUICKSTART.md**](QUICKSTART.md) - Comece em 5 minutos!
+
+**📚 Quer entender tudo?** → [**APRESENTACAO.md**](APRESENTACAO.md) - Documento completo
+
+**🎨 Prefere visualizar?** → [**GUIA_VISUAL.md**](GUIA_VISUAL.md) - Diagramas e fluxos
+
+**📋 Ver índice geral?** → [**INDICE.md**](INDICE.md) - Navegue por toda documentação
+
+**📊 Resumo executivo?** → [**EXECUTIVO.md**](EXECUTIVO.md) - Visão geral do projeto
 
 ## Visão Geral
 
-MoneyLang é uma DSL para operações bancárias que agora possui um compilador escrito com Flex/Bison. O compilador gera Assembly para a BankVM, cujas instruções estão descritas em `docs/VM_SPEC.md`.
+MoneyLang é uma DSL (Linguagem de Domínio Específico) para operações bancárias que possui um compilador completo escrito com Flex/Bison. O compilador gera Assembly para a **BankVM**, uma máquina virtual baseada em pilha customizada.
+
+### 📚 Documentação
+
+- **[APRESENTACAO.md](APRESENTACAO.md)** - Documentação completa (Motivação, Características, Curiosidades, Exemplos)
+- **[QUICKSTART.md](QUICKSTART.md)** - Guia de início rápido em 5 minutos
+- **[docs/VM_SPEC.md](docs/VM_SPEC.md)** - Especificação técnica da BankVM
+- **[exemplos/README.md](exemplos/README.md)** - Documentação dos 10 exemplos
+- **[AGENTS.md](AGENTS.md)** - Guia de contribuição
+- **[RESUMO.md](RESUMO.md)** - Resumo do projeto completo
 
 ## Compilador MoneyLang
 
 ### Dependências
 - GCC/Clang com suporte a C11
-- Flex
-- Bison
+- Flex (analisador léxico)
+- Bison (gerador de parsers)
+- Python 3.6+ (para executar a VM)
 
 ### Construção
 ```bash
@@ -17,11 +39,33 @@ make
 ```
 O binário `bin/moneyc` será gerado junto com artefatos intermediários em `build/`.
 
-### Uso
+### Uso Básico
+
+#### Método 1: Script Helper (Recomendado)
 ```bash
-bin/moneyc programa.money -o saida.asm
+./money.sh programa.money          # Compilar e executar
+./money.sh -d programa.money       # Modo debug
+./money.sh -k programa.money       # Manter arquivo .asm
 ```
-Se `-o` não for indicado, o Assembly é impresso em `stdout`.
+
+#### Método 2: Manual
+```bash
+# Compilar
+./bin/moneyc programa.money -o saida.asm
+
+# Executar
+python3 vm/bankvm.py saida.asm
+
+# Modo debug
+python3 vm/bankvm.py saida.asm --debug
+```
+
+#### Método 3: Usando Make
+```bash
+make test-example EX=01_operacoes_basicas   # Testar exemplo específico
+make test-all                                # Testar todos os exemplos
+make debug-example EX=08_simulacao_completa # Debug de exemplo
+```
 
 ### Exemplo Rápido
 ```money
@@ -33,16 +77,44 @@ enquanto (origem > 0)
 
 mostrar("saldo final", origem, destino)
 ```
+
+**Executar:**
 ```bash
-bin/moneyc exemplo.money -o exemplo.asm
+./money.sh exemplo.money
+```
+
+## 🎯 Exemplos
+
+O projeto inclui 10 exemplos completos em `exemplos/`:
+
+1. **01_operacoes_basicas.money** - Depósito, saque, impressão
+2. **02_transferencias.money** - Transferências entre contas
+3. **03_condicionais.money** - Estruturas se/senão
+4. **04_loops.money** - Laços enquanto
+5. **05_juros.money** - Aplicação de juros compostos
+6. **06_sensores.money** - Sensores tempo e juros
+7. **07_expressoes.money** - Operadores aritméticos
+8. **08_simulacao_completa.money** - Cenário bancário real
+9. **09_comparacoes.money** - Operadores de comparação
+10. **10_loop_transferencias.money** - Loops com transferências
+
+**Executar todos os testes:**
+```bash
+./test_exemplos.sh
 ```
 
 ## Estrutura do Projeto
 - `src/`: arquivos `.l`, `.y` e fontes em C (AST, codegen, main)
 - `include/`: cabeçalhos compartilhados
+- `vm/`: **BankVM** - Máquina virtual em Python
+- `exemplos/`: 10 programas de exemplo demonstrando todas as características
 - `docs/VM_SPEC.md`: especificação textual do Assembly da BankVM
 - `Makefile`: recipes para gerar o compilador
+- `APRESENTACAO.md`: documentação completa da linguagem
+- `QUICKSTART.md`: guia de início rápido
 - `AGENTS.md`: guia de contribuição
+- `money.sh`: script auxiliar para compilar e executar
+- `test_exemplos.sh`: script de testes automatizados
 
 ## EBNF da Linguagem
 

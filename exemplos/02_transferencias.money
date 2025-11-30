@@ -1,0 +1,13 @@
+# Exemplo 2: Transferências entre Contas
+# Demonstra: múltiplas contas e operação de transferência
+
+conta origem = 5000
+conta destino = 1000
+
+mostrar("Saldos iniciais - Origem:", origem, "Destino:", destino)
+
+transferir(origem, destino, 1500)
+
+mostrar("Após transferência de 1500:")
+mostrar("  Origem:", origem)
+mostrar("  Destino:", destino)
